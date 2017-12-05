@@ -6,12 +6,10 @@ import QtCharts 2.2
 Item {
     id: item1
     property alias chartView: chartView
-
     Connections {
         target: netManager
-        onValueUpdated: {
-
-            series.append(x, y)
+        onValueUpdated2: {
+            series2.append(x, y)
             if (x > xAxis.max) {
                 xAxis.max = x
             }
@@ -31,40 +29,35 @@ Item {
             anchors.topMargin: 10
             Text {
                 id: text1
-                color: "#57e85f"
-                text: qsTr("AAPL Open Values")
-                z: 1
+                color: "#e91e1e"
+                text: qsTr("AAPL Close Values")
                 font.italic: true
                 font.pointSize: 20
             }
         }
     }
-
     Item {
         id: item2
         x: 0
         y: 58
         width: parent.width
-        height: parent.height
         anchors.top: parent.top
         anchors.topMargin: 40
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 40
-
         ChartView {
             id: chartView
-            plotAreaColor: "#31ecf7"
-            title: "AAPL Open chart"
+            title: "AAPL Close"
             anchors.fill: parent
-            theme: ChartView.ChartThemeLight
+
             ValueAxis {
                 id: yAxis
-                titleText: "Open"
+                titleText: "Close"
                 titleVisible: true
                 gridVisible: true
                 tickCount: 11
                 min: 0
-                max: 200
+                max: 2
             }
             DateTimeAxis {
                 id: xAxis
@@ -76,14 +69,12 @@ Item {
                 min: "2017-07-17"
                 max: "2017-12-01"
             }
-
             LineSeries {
-                id: series
+                id: series2
+                name: "AAPL Close"
+                visible: true
                 axisX: xAxis
                 axisY: yAxis
-                name: "AAPL Open"
-                color: "#dc143c"
-                visible: true
             }
         }
     }

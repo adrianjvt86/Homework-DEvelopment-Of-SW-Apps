@@ -1,12 +1,14 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
+import QtCharts 2.2
+
 
 ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    title: qsTr("AAPL TimeSeries")
 
     SwipeView {
         id: swipeView
@@ -14,24 +16,48 @@ ApplicationWindow {
         currentIndex: tabBar.currentIndex
 
         Page1 {
+
         }
 
-        Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
-            }
+        Page2 {
+
         }
+        Page3 {
+
+        }
+
     }
+//    RowLayout {
+//        anchors.bottom: tabBar.top
+//        anchors.bottomMargin: 10
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        Button {
+//            id: button1
+//            text: qsTr("Refresh")
+//            onClicked: {
+
+//            }
+//        }
+//        Button {
+//            id: button2
+//            text: qsTr("Save")
+//            onClicked: {
+
+//            }
+//        }
+//    }
 
     footer: TabBar {
         id: tabBar
         currentIndex: swipeView.currentIndex
         TabButton {
-            text: qsTr("First")
+            text: qsTr("Open")
         }
         TabButton {
-            text: qsTr("Second")
+            text: qsTr("Close")
+        }
+        TabButton {
+            text: qsTr("Volume")
         }
     }
 }

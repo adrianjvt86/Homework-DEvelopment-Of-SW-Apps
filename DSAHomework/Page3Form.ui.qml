@@ -5,13 +5,14 @@ import QtCharts 2.2
 
 Item {
     id: item1
+    property alias columnLayout: columnLayout
     property alias chartView: chartView
 
     Connections {
         target: netManager
-        onValueUpdated: {
+        onValueUpdated3: {
 
-            series.append(x, y)
+            series3.append(x, y)
             if (x > xAxis.max) {
                 xAxis.max = x
             }
@@ -26,45 +27,41 @@ Item {
         anchors.fill: parent
 
         RowLayout {
+            z: 1
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 10
             Text {
                 id: text1
-                color: "#57e85f"
-                text: qsTr("AAPL Open Values")
-                z: 1
-                font.italic: true
+                color: "#e91e1e"
+                text: qsTr("AAPL Volume Values")
                 font.pointSize: 20
+                font.italic: true
             }
         }
     }
-
     Item {
         id: item2
         x: 0
         y: 58
         width: parent.width
-        height: parent.height
-        anchors.top: parent.top
-        anchors.topMargin: 40
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 40
+        anchors.top: parent.top
+        anchors.topMargin: 40
 
         ChartView {
             id: chartView
-            plotAreaColor: "#31ecf7"
-            title: "AAPL Open chart"
+            title: "AAPL Volume"
             anchors.fill: parent
-            theme: ChartView.ChartThemeLight
             ValueAxis {
                 id: yAxis
-                titleText: "Open"
+                titleText: "Volume"
                 titleVisible: true
                 gridVisible: true
                 tickCount: 11
                 min: 0
-                max: 200
+                max: 100
             }
             DateTimeAxis {
                 id: xAxis
@@ -76,13 +73,11 @@ Item {
                 min: "2017-07-17"
                 max: "2017-12-01"
             }
-
             LineSeries {
-                id: series
+                id: series3
                 axisX: xAxis
                 axisY: yAxis
-                name: "AAPL Open"
-                color: "#dc143c"
+                name: "Close series"
                 visible: true
             }
         }
