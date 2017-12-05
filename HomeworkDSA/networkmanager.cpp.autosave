@@ -1,0 +1,90 @@
+#include "networkmanager.h"
+#include <QNetworkReply>
+#include <QNetworkRequest>
+
+#include <QDir>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QObject>
+
+NetworkManager::NetworkManager(QObject *parent) : QObject(parent)
+{
+        
+
+}
+
+//(function to load the webpage and receive timeseries data) Here the magic happens!!
+void NetworkManager::loadWebPage(){
+    QNetworkRequest request;
+
+    QString apikey = "2HJ6DUVQ3B4I2OQS";
+
+    QString urlString = QString("https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=HUF&apikey=%0").arg(apikey);
+
+    QUrl url(urlString);
+    request.setUrl(url);
+
+    QNetworkReply *reply = manager->get(request);
+}
+
+//Function to deserialize JSON and obtain the key value pairs of the data of interest
+//need to understand it better
+void NetworkManager::myReplyFinished(QNetworkReply*reply)
+{
+    QByteArray webData = reply->readAll();
+
+    QList<QPair<QString,QString>> graphValues;
+
+    //QString webDataString = QString(webData);
+
+    QJsonDocument document = QJsonDocument::fromJson(webData);
+
+    if(document.isArray() == true){
+        //retreive the array
+        QJsonArray rootArray = document.array();
+    }
+
+    else if(document.isObject() == true)
+    {
+
+        QJsonObject rootObject = document.object();
+
+        QJsonObject timeSeries = rootObject["Time Series (Daily)"].toObject();
+        QStringList keys = timeSeries.keys();
+        for (QString k : keys){
+            QJsonObject dayValues = timeSeries[k].toObject();
+            QString openValue =  dayValues["1. open"].toString();
+
+            QPair<QString,QString> dataItem;
+            dataItem.first = k;
+            dataItem.second = openValue;
+
+            graphValues.append(dataItem);
+        }
+
+/*
+        QStringList keys = rootObject.keys();
+        for (QString k : keys){
+
+
+            if(rootObject[k].isObject() == true){
+                QJsonObject object = rootObject[k].toObject();
+
+                for (QString childkey : object.keys()){
+                    qDebug() << childkey;
+                }
+            }
+        }
+*/
+    }
+
+    for (int i=0; i<graphValues.size(); i++){
+        QPair<QString,QString> data = graphValues[i];
+        qDebug()<<data.first <<" - "<<data.second;
+    }
+
+
+    //qDebug()<<webDataString;
+}
