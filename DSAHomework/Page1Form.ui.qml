@@ -84,7 +84,7 @@ Item {
                 axisX: xAxis
                 axisY: yAxis
                 name: "APPLE Open Values"
-                width: 1
+                width: 3
                 color: "#006600"
                 visible: true
             }

@@ -6,9 +6,9 @@ import QtCharts 2.2
 
 ApplicationWindow {
     visible: true
-    width: 700
+    width: 900
     height: 500
-    title: qsTr("AAPL Stock TimeSeries")
+    title: qsTr("APPLE Stock TimeSeries")
 
 
     SwipeView {

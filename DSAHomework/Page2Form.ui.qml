@@ -75,7 +75,7 @@ Item {
             LineSeries {
                 id: series2
                 name: "APPLE Close Values"
-                width: 1
+                width: 3
                 color: "#990000"
                 visible: true
                 axisX: xAxis

@@ -56,7 +56,7 @@ Item {
         ChartView {
             id: chartView
             plotAreaColor: "#ffffff"
-            title: "AAPL Volume Chart"
+            title: "APPLE Volume Chart"
             anchors.fill: parent
             ValueAxis {
                 id: yAxis
@@ -82,7 +82,7 @@ Item {
                 axisX: xAxis
                 axisY: yAxis
                 name: "APPLE Volume Values"
-                width: 1
+                width: 3
                 color: "#006666"
                 visible: true
             }
