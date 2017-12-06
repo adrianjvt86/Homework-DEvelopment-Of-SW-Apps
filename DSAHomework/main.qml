@@ -6,9 +6,10 @@ import QtCharts 2.2
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("AAPL TimeSeries")
+    width: 700
+    height: 500
+    title: qsTr("AAPL Stock TimeSeries")
+
 
     SwipeView {
         id: swipeView
@@ -27,37 +28,19 @@ ApplicationWindow {
         }
 
     }
-//    RowLayout {
-//        anchors.bottom: tabBar.top
-//        anchors.bottomMargin: 10
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        Button {
-//            id: button1
-//            text: qsTr("Refresh")
-//            onClicked: {
 
-//            }
-//        }
-//        Button {
-//            id: button2
-//            text: qsTr("Save")
-//            onClicked: {
-
-//            }
-//        }
-//    }
 
     footer: TabBar {
         id: tabBar
         currentIndex: swipeView.currentIndex
         TabButton {
-            text: qsTr("Open")
+            text: qsTr("Open Stock")
         }
         TabButton {
-            text: qsTr("Close")
+            text: qsTr("Close Stock")
         }
         TabButton {
-            text: qsTr("Volume")
+            text: qsTr("Volume Stock")
         }
     }
 }

@@ -29,10 +29,12 @@ Item {
             anchors.topMargin: 10
             Text {
                 id: text1
-                color: "#e91e1e"
-                text: qsTr("AAPL Close Values")
-                font.italic: true
-                font.pointSize: 20
+                color: "#510051"
+                text: "APPLE Close Stocks"
+                font.bold: true
+                font.family: "Times New Roman"
+                font.italic: false
+                font.pointSize: 24
             }
         }
     }
@@ -47,12 +49,13 @@ Item {
         anchors.bottomMargin: 40
         ChartView {
             id: chartView
-            title: "AAPL Close"
+            plotAreaColor: "#ffffff"
+            title: "APPLE Close Chart"
             anchors.fill: parent
 
             ValueAxis {
                 id: yAxis
-                titleText: "Close"
+                titleText: "USD"
                 titleVisible: true
                 gridVisible: true
                 tickCount: 11
@@ -71,7 +74,9 @@ Item {
             }
             LineSeries {
                 id: series2
-                name: "AAPL Close"
+                name: "APPLE Close Values"
+                width: 1
+                color: "#990000"
                 visible: true
                 axisX: xAxis
                 axisY: yAxis

@@ -33,10 +33,13 @@ Item {
             anchors.topMargin: 10
             Text {
                 id: text1
-                color: "#e91e1e"
-                text: qsTr("AAPL Volume Values")
-                font.pointSize: 20
-                font.italic: true
+                color: "#510051"
+                text: "APPLE Stock Volume"
+                font.bold: true
+                font.family: "Times New Roman"
+                horizontalAlignment: Text.AlignHCenter
+                font.pointSize: 24
+                font.italic: false
             }
         }
     }
@@ -52,7 +55,8 @@ Item {
 
         ChartView {
             id: chartView
-            title: "AAPL Volume"
+            plotAreaColor: "#ffffff"
+            title: "AAPL Volume Chart"
             anchors.fill: parent
             ValueAxis {
                 id: yAxis
@@ -77,7 +81,9 @@ Item {
                 id: series3
                 axisX: xAxis
                 axisY: yAxis
-                name: "Close series"
+                name: "APPLE Volume Values"
+                width: 1
+                color: "#006666"
                 visible: true
             }
         }

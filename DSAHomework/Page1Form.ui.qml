@@ -31,11 +31,13 @@ Item {
             anchors.topMargin: 10
             Text {
                 id: text1
-                color: "#57e85f"
-                text: qsTr("AAPL Open Values")
+                color: "#510051"
+                text: qsTr("APPLE Open Stock")
+                font.bold: true
+                font.family: "Times New Roman"
                 z: 1
-                font.italic: true
-                font.pointSize: 20
+                font.italic: false
+                font.pointSize: 24
             }
         }
     }
@@ -53,13 +55,13 @@ Item {
 
         ChartView {
             id: chartView
-            plotAreaColor: "#31ecf7"
-            title: "AAPL Open chart"
+            plotAreaColor: "#ffffff"
+            title: "APPLE Open chart"
             anchors.fill: parent
             theme: ChartView.ChartThemeLight
             ValueAxis {
                 id: yAxis
-                titleText: "Open"
+                titleText: "USD"
                 titleVisible: true
                 gridVisible: true
                 tickCount: 11
@@ -81,8 +83,9 @@ Item {
                 id: series
                 axisX: xAxis
                 axisY: yAxis
-                name: "AAPL Open"
-                color: "#dc143c"
+                name: "APPLE Open Values"
+                width: 1
+                color: "#006600"
                 visible: true
             }
         }
