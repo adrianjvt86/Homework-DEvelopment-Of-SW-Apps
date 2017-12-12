@@ -17,7 +17,7 @@ NetworkManager::NetworkManager(QObject *parent) : QObject(parent)
 }
 
 
- //(function to load the webpage and receive timeseries data)
+//(function to load the webpage and receive timeseries data)
 void NetworkManager::loadWebPage(){
     QNetworkRequest request;
 
@@ -41,9 +41,9 @@ void NetworkManager::replyFinished(QNetworkReply *reply)
     QFile *file = new QFile(QDir::currentPath() + "\\AAPL Stocks.txt");
     if(file->open(QFile::Append))
     {
-      file->write(webData);
-      file->flush();
-      file->close();
+        file->write(webData);
+        file->flush();
+        file->close();
     }
     delete file;
 
@@ -72,7 +72,7 @@ void NetworkManager::replyFinished(QNetworkReply *reply)
             QString closeValue = dayValues["4. close"].toString();
             QString volume = dayValues["5. volume"].toString();
 
-//            qDebug()<<volume;
+            //            qDebug()<<volume;
 
             QPair<QString,QString> dataItem;
             dataItem.first = k;
@@ -92,12 +92,12 @@ void NetworkManager::replyFinished(QNetworkReply *reply)
             graphValuesClose.append(dataItem2);
             graphValuesVolume.append(dataItem3);
 
-            }
+        }
 
     }
     for (int i=0; i<graphValuesOpen.size(); i++){
         QPair<QString,QString> data = graphValuesOpen[i];
-//        qDebug()<<data.first <<" - "<<data.second;
+        //        qDebug()<<data.first <<" - "<<data.second;
         float list=data.second.toFloat();
         QDateTime xAxisValue; xAxisValue.setDate(QDate::fromString(data.first,"yyyy-MM-dd"));
         xAxisValue.toMSecsSinceEpoch();

@@ -69,8 +69,8 @@ Item {
                 labelsAngle: 90
                 gridVisible: true
                 format: "yyyy-MM-dd"
-                min: "2017-07-17"
-                max: "2017-12-01"
+                min: "2017-07-21"
+                max: "2017-12-11"
             }
             LineSeries {
                 id: series2

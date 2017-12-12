@@ -24,7 +24,6 @@ Item {
     ColumnLayout {
         id: columnLayout
         anchors.fill: parent
-
         RowLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
@@ -55,6 +54,7 @@ Item {
 
         ChartView {
             id: chartView
+            anchors.topMargin: 48
             plotAreaColor: "#ffffff"
             title: "APPLE Open chart"
             anchors.fill: parent
@@ -75,8 +75,8 @@ Item {
                 labelsAngle: 90
                 gridVisible: true
                 format: "yyyy-MM-dd"
-                min: "2017-07-17"
-                max: "2017-12-01"
+                min: "2017-07-21"
+                max: "2017-12-11"
             }
 
             LineSeries {
@@ -88,6 +88,18 @@ Item {
                 color: "#006600"
                 visible: true
             }
+        }
+
+        Image {
+            id: image
+            x: 263
+            y: -35
+            width: 100
+            height: 64
+            anchors.horizontalCenterOffset: -262
+            anchors.horizontalCenter: parent.horizontalCenter
+            source: "Apple.jpg"
+            visible: true
         }
     }
 }
